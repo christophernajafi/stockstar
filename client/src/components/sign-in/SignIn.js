@@ -6,40 +6,54 @@ import { Link } from "react-router-dom";
 
 import "./sign-in.css";
 
-const SignIn = () => {
+const SignIn = props => {
+  const [formState, setFormState] = useState({
+    email: "",
+    password: ""
+  });
+
+  const { email, password } = formState;
+
+  const handleChange = event => {
+    setFormState({
+      ...formState,
+      [event.target.name]: event.target.value
+    });
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    // eslint-disable-next-line
+    props.history.push("/portfolio");
+    console.log("formState: ", formState);
+  };
+
   return (
     <Fragment>
       <div className="Login">
-        <form
-        // onSubmit={this.onSubmit}
-        >
+        <form onSubmit={handleSubmit}>
           <FormGroup controlId="email" size="lg">
             <FormControl
               autoFocus
               type="email"
               placeholder="Email"
-              // onChange={this.onChange}
+              onChange={handleChange}
               required
               name="email"
-              // defaultValue={email}
+              defaultValue={email}
             />
           </FormGroup>
           <FormGroup controlId="password" size="lg">
             <FormControl
               placeholder="Password"
-              // onChange={this.onChange}
+              onChange={handleChange}
               type="password"
               required
               name="password"
-              // defaultValue={password}
+              defaultValue={password}
             />
           </FormGroup>
-          <Button
-            block
-            size="lg"
-            // disabled={!(email && password)}
-            type="submit"
-          >
+          <Button block size="lg" disabled={!(email && password)} type="submit">
             Sign In
           </Button>
 

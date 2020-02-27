@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
 const NavbarComponent = props => {
+  // const authLinks = <Fragment></Fragment>;
+
   return (
     <Navbar>
       <Nav.Link href="/">Home</Nav.Link>

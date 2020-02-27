@@ -6,23 +6,57 @@ import { Link } from "react-router-dom";
 
 import "./register.css";
 
-const Register = () => {
+const Register = props => {
+  const [formState, setFormState] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
+  });
+
+  const { firstName, lastName, email, password, confirmPassword } = formState;
+
+  const handleChange = event => {
+    setFormState({
+      ...formState,
+      [event.target.name]: event.target.value
+    });
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    // eslint-disable-next-line
+    props.history.push("/portfolio");
+    console.log("formState: ", formState);
+  };
+
   return (
     <Fragment>
       <div className="Signup">
-        <form
-        // onSubmit={this.onSubmit}
-        >
-          <FormGroup controlId="name" size="lg">
+        <form onSubmit={handleSubmit}>
+          <FormGroup controlId="firstName" size="lg">
             <FormControl
               autoFocus
               type="text"
-              // value={email}
-              // onChange={this.onChange}
-              placeholder="Name"
+              // value={firstName}
+              onChange={handleChange}
+              placeholder="First Name"
               required
-              name="name"
-              // defaultValue={name}
+              name="firstName"
+              defaultValue={firstName}
+            />
+          </FormGroup>
+          <FormGroup controlId="lastName" size="lg">
+            <FormControl
+              autoFocus
+              type="text"
+              // value={lastName}
+              onChange={handleChange}
+              placeholder="Last Name"
+              required
+              name="lastName"
+              defaultValue={lastName}
             />
           </FormGroup>
           <FormGroup controlId="email" size="lg">
@@ -30,39 +64,41 @@ const Register = () => {
               autoFocus
               type="email"
               // value={email}
-              // onChange={this.onChange}
+              onChange={handleChange}
               placeholder="Email"
               required
               name="email"
-              // defaultValue={email}
+              defaultValue={email}
             />
           </FormGroup>
           <FormGroup controlId="password" size="lg">
             <FormControl
               // value={password}
-              // onChange={this.onChange}
+              onChange={handleChange}
               type="password"
               placeholder="Password"
               required
               name="password"
-              // defaultValue={password}
+              defaultValue={password}
             />
           </FormGroup>
           <FormGroup controlId="confirmPassword" size="lg">
             <FormControl
               // value={password}
-              // onChange={this.onChange}
+              onChange={handleChange}
               type="password"
               placeholder="Confirm Password"
               required
               name="confirmPassword"
-              // defaultValue={confirmPassword}
+              defaultValue={confirmPassword}
             />
           </FormGroup>
           <Button
             block
             size="lg"
-            // disabled={!(name && email && password && confirmPassword)}
+            disabled={
+              !(firstName && lastName && email && password && confirmPassword)
+            }
             type="submit"
           >
             Register
