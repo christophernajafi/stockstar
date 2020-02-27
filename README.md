@@ -21,7 +21,7 @@ A web-based stock portfolio app
 
 - Node.js
 - Express
-- Passport.js
+- Passport
 - PostgreSQL
 - Sequelize
 - IEX API
