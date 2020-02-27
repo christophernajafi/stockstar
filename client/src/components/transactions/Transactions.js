@@ -27,11 +27,13 @@ const DUMMY_DATA = [
   }
 ];
 
+const transactions = DUMMY_DATA;
+
 const Transactions = props => {
   return (
     <Fragment>
       <h1>Transactions</h1>
-      {DUMMY_DATA.length && DUMMY_DATA.map()}
+      {/* {transactions.length > 0 && transactions.map()} */}
     </Fragment>
   );
 };
