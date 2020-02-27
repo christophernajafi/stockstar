@@ -14,6 +14,7 @@ A web-based stock portfolio app
 - Redux
 - React Bootstrap
 - Font Awesome
+- Google Analytics
 
 ### Back End
 
