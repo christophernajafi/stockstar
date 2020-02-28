@@ -30,7 +30,7 @@ const SignIn = props => {
 
   return (
     <Fragment>
-      <div className="Login">
+      <div className="sign-in">
         <form onSubmit={handleSubmit}>
           <FormGroup controlId="email" size="lg">
             <FormControl

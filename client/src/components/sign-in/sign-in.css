@@ -1,16 +1,16 @@
 @media all and (min-width: 480px) {
-  .Login {
+  .sign-in {
     padding: 60px 0;
   }
 
-  .Login form {
+  .sign-in form {
     margin: 0 auto;
     max-width: 320px;
   }
 }
 
 @media screen and (max-device-width: 480px) and (orientation: portrait) {
-  .Login {
+  .sign-in {
     margin-top: 10%;
     margin-left: 5%;
     margin-right: 5%;

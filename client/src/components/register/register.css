@@ -1,16 +1,16 @@
 @media all and (min-width: 480px) {
-  .Signup {
+  .register {
     padding: 60px 0;
   }
 
-  .Signup form {
+  .register form {
     margin: 0 auto;
     max-width: 320px;
   }
 }
 
 @media screen and (max-device-width: 480px) and (orientation: portrait) {
-  .Signup {
+  .register {
     margin-top: 10%;
     margin-left: 5%;
     margin-right: 5%;
@@ -18,7 +18,7 @@
 }
 
 @media screen and (max-device-width: 640px) and (orientation: landscape) {
-  .Signup {
+  .register {
     margin-top: 0;
   }
 }

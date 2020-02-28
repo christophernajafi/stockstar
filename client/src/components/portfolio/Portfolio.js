@@ -4,24 +4,29 @@ import Table from "react-bootstrap/Table";
 
 import TradeModal from "../trade-modal/TradeModal";
 import PortfolioItem from "../portfolio-item/PortfolioItem";
+import "./portfolio.css";
 
 const DUMMY_DATA = [
   {
+    id: "1",
     ticker: "AAPL",
     shares: 100,
     price: 100.0
   },
   {
+    id: "2",
     ticker: "AAPL",
     shares: 100,
     price: 100.0
   },
   {
+    id: "3",
     ticker: "AAPL",
     shares: 100,
     price: 100.0
   },
   {
+    id: "4",
     ticker: "AAPL",
     shares: 100,
     price: 100.0
@@ -38,9 +43,9 @@ const Portfolio = props => {
   const handleShow = () => setShow(true);
 
   return (
-    <Container>
+    <Container className="portfolio-container">
       <h1>Portfolio</h1>
-      {/* {portfolio.length > 0 && portfolio.map()} */}
+
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -50,26 +55,11 @@ const Portfolio = props => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>AAPL</td>
-            <td>100</td>
-            <td>$3,000.00</td>
-          </tr>
-          <tr>
-            <td>AAPL</td>
-            <td>100</td>
-            <td>$3,000.00</td>
-          </tr>
-          <tr>
-            <td>AAPL</td>
-            <td>100</td>
-            <td>$3,000.00</td>
-          </tr>
-          <tr>
-            <td>AAPL</td>
-            <td>100</td>
-            <td>$3,000.00</td>
-          </tr>
+          {portfolio.length > 0 &&
+            portfolio.map(item => {
+              // console.log(item);
+              return <PortfolioItem key={item.id} data={item} />;
+            })}
 
           {/* <tr>
             <td colSpan="2">Larry the Bird</td>

@@ -1,13 +1,19 @@
 import React, { Fragment } from "react";
 
+import { formatDollar } from "../../utils";
+
 const PortfolioItem = props => {
-  const { stockSymbol, numShares, price } = props;
+  const { ticker, shares, price } = props.data;
+
+  // console.log(props.data);
 
   return (
     <Fragment>
-      <td>{stockSymbol}</td>
-      <td>{numShares}</td>
-      <td>{numShares * price}</td>
+      <tr>
+        <td>{ticker}</td>
+        <td>{shares}</td>
+        <td>{formatDollar(shares * price)}</td>
+      </tr>
     </Fragment>
   );
 };

@@ -33,7 +33,7 @@ const Register = props => {
 
   return (
     <Fragment>
-      <div className="Signup">
+      <div className="register">
         <form onSubmit={handleSubmit}>
           <FormGroup controlId="firstName" size="lg">
             <FormControl
@@ -104,7 +104,7 @@ const Register = props => {
             Register
           </Button>
           <p className="my-1 text-center">
-            Already have an account? <Link to="/">Sign In</Link>
+            Already have an account? <Link to="/sign-in">Sign In</Link>
           </p>
         </form>
       </div>
