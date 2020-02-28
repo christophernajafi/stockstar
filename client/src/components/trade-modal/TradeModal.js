@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 // eslint-disable-next-line
 import { Modal, Button, Form } from "react-bootstrap";
 
@@ -34,12 +33,12 @@ const TradeModal = props => {
         <Modal.Title>Trade</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form.Group controlId="tradeType">
-          <Form.Label>Buy or Sell</Form.Label>
+        <Form.Group controlId="stockSymbol">
+          <Form.Label>Buy</Form.Label>
           <Form.Control
-            name="tradeType"
+            name="stockSymbol"
             type="text"
-            placeholder="Buy or Sell"
+            placeholder="Enter ticker symbol"
           />
         </Form.Group>
         <Form.Group controlId="quantity">
@@ -50,14 +49,14 @@ const TradeModal = props => {
             placeholder="Enter quantity"
           />
         </Form.Group>
-        <Form.Group controlId="stockSymbol">
+        {/* <Form.Group controlId="stockSymbol">
           <Form.Label>Stock Symbol</Form.Label>
           <Form.Control
             name="stockSymbol"
             type="text"
             placeholder="Enter stock symbol"
           />
-        </Form.Group>
+        </Form.Group> */}
         <Form.Group controlId="price">
           <Form.Label>Price</Form.Label>
           <Form.Control name="price" type="text" placeholder="Enter price" />
@@ -65,7 +64,7 @@ const TradeModal = props => {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="primary" type="submit" onClick={onHide}>
-          Trade
+          Buy
         </Button>
         <Button variant="secondary" type="submit" onClick={onHide}>
           Cancel

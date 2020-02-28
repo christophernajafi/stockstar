@@ -10,6 +10,13 @@ const NavbarComponent = props => {
     </Fragment>
   );
 
+  const unAuthLinks = (
+    <Fragment>
+      <Nav.Link href="/sign-in">Sign-In</Nav.Link>
+      <Nav.Link href="/register">Register</Nav.Link>
+    </Fragment>
+  );
+
   const authLinks = (
     <Fragment>
       <Nav.Link href="/portfolio">Portfolio</Nav.Link>
@@ -25,6 +32,7 @@ const NavbarComponent = props => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           {allLinks}
+          {unAuthLinks}
           {authLinks}
         </Nav>
       </Navbar.Collapse>

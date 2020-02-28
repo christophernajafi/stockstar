@@ -9,7 +9,7 @@
     "seed": "node script/seed.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Christopher Najafi",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",

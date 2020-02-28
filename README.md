@@ -1,12 +1,12 @@
 # StockStar
 
-A web-based stock application that enables a user to buy and sell stocks, keep track of their holdings in a portfolio, and see their transaction history.
+A web-based stock application that enables a user to buy stocks, keep track of their holdings in a portfolio, and see their transaction history.
 
-## Deployed Link
+## Deployed Link on Heroku
 
-[StockStar Deployed on Heroku](https://stockstar-cn.herokuapp.com)
+<https://stockstar-cn.herokuapp.com>
 
-## Tech Stack
+## Technology Stack
 
 ### Front End
 
@@ -31,6 +31,9 @@ A web-based stock application that enables a user to buy and sell stocks, keep t
 ```shell
 # Clone repo
 git clone https://github.com/christophernajafi/stockstar.git
+
+# Change directory
+cd stockstar
 
 # Install node modules
 npm install

@@ -3,7 +3,7 @@ export const formatDollar = amount => {
   // decimals
   const arrAmount = dollar.split(".");
   if (arrAmount.length == 2) {
-    var decimal = arrAmount[1];
+    const decimal = arrAmount[1];
     if (decimal.length == 1) {
       arrAmount[1] += "0";
     }
