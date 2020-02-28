@@ -64,23 +64,12 @@ const TradeModal = props => {
         </Form.Group>
       </Modal.Body>
       <Modal.Footer>
-        <Button
-          block
-          size="lg"
-          // disabled={!(email && password)}
-          type="submit"
-          onClick={onHide}
-        >
+        <Button variant="primary" type="submit" onClick={onHide}>
           Trade
         </Button>
-
-        {/* <Button variant="primary" type="submit" onClick={onHide}>
-          Log In
-        </Button> */}
-
-        {/* <Button variant="secondary" type="submit" onClick={onHide}>
+        <Button variant="secondary" type="submit" onClick={onHide}>
           Cancel
-        </Button> */}
+        </Button>
       </Modal.Footer>
     </Modal>
   );
