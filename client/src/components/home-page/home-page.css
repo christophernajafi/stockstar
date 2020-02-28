@@ -3,6 +3,11 @@ i {
   margin-bottom: 30px;
 }
 
+.gold-text {
+  color: gold;
+  font-weight: bold;
+}
+
 .badge-container {
   display: flex;
   flex-direction: row;
@@ -12,6 +17,7 @@ i {
 .badge {
   display: flex;
   flex-direction: column;
+  margin: 10%;
 }
 
 .greeting {
@@ -20,7 +26,23 @@ i {
 }
 
 .home-page {
-  /* align-items: center;
-  display: flex;
-  justify-content: center; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+@media (max-width: 800px) {
+  .badge-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-top: 35%;
+  }
+
+  .badge {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
 }

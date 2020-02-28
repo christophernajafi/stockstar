@@ -39,7 +39,7 @@ const Portfolio = props => {
 
   return (
     <Container>
-      <h1>Portfolio ($ 9,000.00)</h1>
+      <h1>Portfolio</h1>
       {/* {portfolio.length > 0 && portfolio.map()} */}
       <Table striped bordered hover>
         <thead>
@@ -85,6 +85,7 @@ const Portfolio = props => {
         </tfoot> */}
       </Table>
 
+      <h3>Value - $9,000.00</h3>
       <h3>Cash - $5,000.00</h3>
 
       <Button onClick={handleShow}>Buy Stock</Button>

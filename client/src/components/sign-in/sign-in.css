@@ -8,3 +8,11 @@
     max-width: 320px;
   }
 }
+
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  .Login {
+    margin-top: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}
