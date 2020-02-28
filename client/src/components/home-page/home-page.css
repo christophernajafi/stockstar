@@ -1,0 +1,26 @@
+i {
+  color: gold;
+  margin-bottom: 30px;
+}
+
+.badge-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.badge {
+  display: flex;
+  flex-direction: column;
+}
+
+.greeting {
+  display: flex;
+  justify-content: center;
+}
+
+.home-page {
+  /* align-items: center;
+  display: flex;
+  justify-content: center; */
+}

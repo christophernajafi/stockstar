@@ -46,7 +46,7 @@ const Portfolio = props => {
           <tr>
             <th>Stock</th>
             <th>Shares</th>
-            <th>Amount</th>
+            <th>Current Value</th>
           </tr>
         </thead>
         <tbody>
