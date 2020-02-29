@@ -38,7 +38,7 @@ cd stockstar
 # Install node modules and seed database
 npm install && npm run install-client && npm run seed
 
-# Startup app
+# Start app locally
 npm run dev
 ```
 
