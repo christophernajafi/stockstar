@@ -35,8 +35,8 @@ git clone https://github.com/christophernajafi/stockstar.git
 # Change directory
 cd stockstar
 
-# Install node modules
-npm install
+# Install node modules and seed database
+npm install && npm run install-client && npm run seed
 
 # Startup app
 npm run dev
