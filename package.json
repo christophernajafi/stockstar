@@ -1,24 +1,32 @@
 {
-  "name": "stockstar",
+  "name": "stockstar-server",
   "version": "1.0.0",
-  "description": "A web-based stock portfolio app",
-  "main": "index.js",
+  "description": "A web-based stock application",
+  "main": "server.js",
   "scripts": {
-    "start": "node server",
-    "server": "npm run dev --prefix server",
+    "start": "node server.js",
+    "server": "nodemon server.js",
     "client": "npm start --prefix client",
-    "install": "npm install --prefix client && npm install --prefix server",
+    "clientinstall": "npm install --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "seed": "node script/seed.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "Christopher Najafi",
   "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "passport": "^0.4.1",
+    "pg": "^7.18.2",
+    "sequelize": "^5.21.5"
+  },
   "devDependencies": {
-    "concurrently": "^5.1.0"
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.2"
   },
   "engines": {
     "node": ">= 12.13.1"
-  },
-  "homepage": "https://stockstar-cn.herokuapp.com/"
+  }
 }
