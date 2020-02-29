@@ -23,5 +23,6 @@
   },
   "engines": {
     "node": ">= 12.13.1"
-  }
+  },
+  "homepage": "https://stockstar-cn.herokuapp.com/"
 }
