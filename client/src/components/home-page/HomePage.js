@@ -8,17 +8,17 @@ const HomePage = props => {
     <div className="home-page">
       <div className="badge-container">
         <div className="badge">
-          <i class="fas fa-hand-holding-usd fa-5x"></i>
+          <i className="fas fa-hand-holding-usd fa-5x"></i>
           <h3>Buy Stocks</h3>
         </div>
         <br />
         <div className="badge">
-          <i class="fas fa-money-check-alt fa-5x"></i>
+          <i className="fas fa-money-check-alt fa-5x"></i>
           <h3>View Portfolio</h3>
         </div>
         <br />
         <div className="badge">
-          <i class="fas fa-file-invoice fa-5x"></i>
+          <i className="fas fa-file-invoice fa-5x"></i>
           <h3>View Transactions</h3>
         </div>
       </div>

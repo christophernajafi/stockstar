@@ -1,5 +1,7 @@
 import React, { Fragment } from "react";
 
+import TransactionsItem from "../transactions-item/TransactionsItem";
+
 const DUMMY_DATA = [
   {
     type: "BUY",
