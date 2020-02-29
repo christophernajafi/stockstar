@@ -4,7 +4,7 @@
   "description": "A web-based stock portfolio app",
   "main": "index.js",
   "scripts": {
-    "start": "node server && npm run start --prefix client",
+    "start": "node server",
     "server": "npm run dev --prefix server",
     "client": "npm start --prefix client",
     "install": "npm install --prefix client && npm install --prefix server",
