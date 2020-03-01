@@ -30,22 +30,22 @@ passport.deserializeUser(async (id, done) => {
 app.use(express.json({ extended: false }));
 app.use(express.urlencoded({ extended: true }));
 
-// app.use(morgan("dev"));
+app.use(morgan("dev"));
 
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET || "Fidelio",
-//     store: sessionStore,
-//     resave: false,
-//     saveUninitialized: false,
-//     proxy: true
-//   })
-// );
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "Fidelio",
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false,
+    proxy: true
+  })
+);
 
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
-// app.use("/api", require("./api"));
+app.use("/api", require("./api"));
 
 // app.use((req, res, next) => {
 //   if (path.extname(req.path).length) {
