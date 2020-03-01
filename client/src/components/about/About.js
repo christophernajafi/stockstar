@@ -5,7 +5,7 @@ import "./about.css";
 
 const About = () => {
   return (
-    <Container className="about-container">
+    <Container>
       <Jumbotron>
         <p>
           StockStar is web-based stock portfolio app that enables a user to buy
@@ -14,7 +14,7 @@ const About = () => {
         </p>
         <p>
           <h3>Technology Stack</h3>
-          <ul>
+          <ul className="about-ul">
             <li>React</li>
             <li>Redux</li>
             <li>Bootstrap</li>

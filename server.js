@@ -1,17 +1,70 @@
-const express = require("express");
-// const connectDB = require("./config/db");
 const path = require("path");
+const express = require("express");
+const morgan = require("morgan"); // logging middleware
+const session = require("express-session");
+const passport = require("passport");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const db = require("./db");
+const sessionStore = new SequelizeStore({
+  db
+});
+const bodyParser = require("body-parser");
 const app = express();
+const { findById } = require("./utils/users");
+module.exports = app;
 
-// Connect database
-// connectDB();
+passport.serializeUser((user, done) => done(null, user.id));
 
-// Init Middleware
-app.use(express.json({ extended: false }));
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await User.findByPk(id);
+    done(null, user);
+  } catch (err) {
+    done(err);
+  }
+});
 
-// Define routes
-// app.use("/api/users", require("./routes/users"));
-// app.use("/api/auth", require("./routes/auth"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// app.use(express.json({ extended: false }));
+// app.use(express.urlencoded({ extended: true }));
+
+app.use(morgan("dev"));
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "Fidelio",
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false,
+    proxy: true
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use("/api", require("./api"));
+
+app.use((req, res, next) => {
+  if (path.extname(req.path).length) {
+    const err = new Error("Not found");
+    err.status = 404;
+    next(err);
+  } else {
+    next();
+  }
+});
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  console.error(err.stack);
+  res.status(err.status || 500).send(err.message || "Internal server error.");
+});
+
+sessionStore.sync();
+db.sync();
 
 // Serve static assets in production
 if (process.env.NODE_ENV === "production") {

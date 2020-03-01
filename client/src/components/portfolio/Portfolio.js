@@ -44,7 +44,7 @@ const Portfolio = props => {
 
   return (
     <Container className="portfolio-container">
-      <h1>Portfolio</h1>
+      <h1>Portfolio Value: $</h1>
 
       <Table striped bordered hover>
         <thead>
@@ -75,8 +75,8 @@ const Portfolio = props => {
         </tfoot> */}
       </Table>
 
-      <h3>Value - $9,000.00</h3>
-      <h3>Cash - $5,000.00</h3>
+      {/* <h3>Value - $9,000.00</h3> */}
+      {/* <h3>Cash - $5,000.00</h3> */}
 
       <Button onClick={handleShow}>Buy Stock</Button>
 

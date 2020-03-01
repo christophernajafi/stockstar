@@ -1,3 +1,7 @@
+.register {
+  margin-top: 20%;
+}
+
 @media all and (min-width: 480px) {
   .register {
     padding: 60px 0;

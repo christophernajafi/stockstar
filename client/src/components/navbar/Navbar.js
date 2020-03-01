@@ -2,6 +2,8 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
+import "./navbar.css";
+
 const NavbarComponent = props => {
   const allLinks = (
     <Fragment>
@@ -25,7 +27,7 @@ const NavbarComponent = props => {
   );
 
   return (
-    <Navbar bg="light" expand="lg" sticky="top">
+    <Navbar expand="lg" sticky="top" className="navbar">
       <Navbar.Brand href="/">StockStar</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
@@ -41,3 +43,6 @@ const NavbarComponent = props => {
 };
 
 export default NavbarComponent;
+
+// bg="light"
+// style={{ color: "black", fontWeight: "bold" }}

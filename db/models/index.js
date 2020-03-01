@@ -1,10 +1,11 @@
-// const User = require("./user");
-// const Stock = require("./stocks");
+const User = require("./user");
+const Holdings = require("./holdings");
+const Transactions = require("./transactions");
 
-// User.hasMany(Stock);
-// Stock.belongsTo(User);
+Holdings.belongsTo(User);
+User.hasMany(Holdings);
 
-// module.exports = {
-//   User,
-//   Stock
-// };
+Transactions.belongsTo(User);
+User.hasMany(Transactions);
+
+module.exports = { User, Transactions, Holdings };
