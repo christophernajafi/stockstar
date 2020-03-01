@@ -13,58 +13,58 @@ const app = express();
 const { findById } = require("./utils/users");
 module.exports = app;
 
-passport.serializeUser((user, done) => done(null, user.id));
+// passport.serializeUser((user, done) => done(null, user.id));
 
-passport.deserializeUser(async (id, done) => {
-  try {
-    const user = await findById(id);
-    done(null, user);
-  } catch (err) {
-    done(err);
-  }
-});
+// passport.deserializeUser(async (id, done) => {
+//   try {
+//     const user = await findById(id);
+//     done(null, user);
+//   } catch (err) {
+//     done(err);
+//   }
+// });
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+// // app.use(bodyParser.json());
+// // app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.json({ extended: false }));
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.json({ extended: false }));
+// app.use(express.urlencoded({ extended: true }));
 
-app.use(morgan("dev"));
+// app.use(morgan("dev"));
 
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET || "Fidelio",
-    store: sessionStore,
-    resave: false,
-    saveUninitialized: false,
-    proxy: true
-  })
-);
+// app.use(
+//   session({
+//     secret: process.env.SESSION_SECRET || "Fidelio",
+//     store: sessionStore,
+//     resave: false,
+//     saveUninitialized: false,
+//     proxy: true
+//   })
+// );
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
-app.use("/api", require("./api"));
+// app.use("/api", require("./api"));
 
-app.use((req, res, next) => {
-  if (path.extname(req.path).length) {
-    const err = new Error("Not found");
-    err.status = 404;
-    next(err);
-  } else {
-    next();
-  }
-});
+// app.use((req, res, next) => {
+//   if (path.extname(req.path).length) {
+//     const err = new Error("Not found");
+//     err.status = 404;
+//     next(err);
+//   } else {
+//     next();
+//   }
+// });
 
-app.use((err, req, res, next) => {
-  console.error(err);
-  console.error(err.stack);
-  res.status(err.status || 500).send(err.message || "Internal server error.");
-});
+// app.use((err, req, res, next) => {
+//   console.error(err);
+//   console.error(err.stack);
+//   res.status(err.status || 500).send(err.message || "Internal server error.");
+// });
 
-sessionStore.sync();
-db.sync();
+// sessionStore.sync();
+// db.sync();
 
 // Serve static assets in production
 if (process.env.NODE_ENV === "production") {
