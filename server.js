@@ -1,6 +1,6 @@
 const path = require("path");
 const express = require("express");
-const morgan = require("morgan"); // logging middleware
+const morgan = require("morgan");
 const session = require("express-session");
 const passport = require("passport");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -24,11 +24,14 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+sessionStore.sync();
+db.sync();
 
-// app.use(express.json({ extended: false }));
-// app.use(express.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.json({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 app.use(morgan("dev"));
 
@@ -62,9 +65,6 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(err.status || 500).send(err.message || "Internal server error.");
 });
-
-sessionStore.sync();
-db.sync();
 
 // Serve static assets in production
 if (process.env.NODE_ENV === "production") {
