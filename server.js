@@ -24,6 +24,9 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
+sessionStore.sync();
+db.sync();
+
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -47,25 +50,6 @@ app.use(passport.session());
 
 app.use("/api", require("./api"));
 
-// app.use((req, res, next) => {
-//   if (path.extname(req.path).length) {
-//     const err = new Error("Not found");
-//     err.status = 404;
-//     next(err);
-//   } else {
-//     next();
-//   }
-// });
-
-app.use((err, req, res, next) => {
-  console.error(err);
-  console.error(err.stack);
-  res.status(err.status || 500).send(err.message || "Internal server error.");
-});
-
-sessionStore.sync();
-db.sync();
-
 // Serve static assets in production
 if (process.env.NODE_ENV === "production") {
   // Set static folder
@@ -74,6 +58,22 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
   );
 }
+
+app.use((req, res, next) => {
+  if (path.extname(req.path).length) {
+    const err = new Error("Not found");
+    err.status = 404;
+    next(err);
+  } else {
+    next();
+  }
+});
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  console.error(err.stack);
+  res.status(err.status || 500).send(err.message || "Internal server error.");
+});
 
 const PORT = process.env.PORT || 5000;
 
