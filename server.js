@@ -50,7 +50,7 @@ app.use(passport.session());
 
 app.use("/api", require("./api"));
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "client", "build", "index.html")));
 
 app.use((req, res, next) => {
   if (path.extname(req.path).length) {
