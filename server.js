@@ -17,15 +17,12 @@ passport.serializeUser((user, done) => done(null, user.id));
 
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await User.findByPk(id);
+    const user = await findById(id);
     done(null, user);
   } catch (err) {
     done(err);
   }
 });
-
-sessionStore.sync();
-db.sync();
 
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
@@ -50,8 +47,6 @@ app.use(passport.session());
 
 app.use("/api", require("./api"));
 
-app.use(express.static(path.join(__dirname, "client", "build", "index.html")));
-
 app.use((req, res, next) => {
   if (path.extname(req.path).length) {
     const err = new Error("Not found");
@@ -67,6 +62,9 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(err.status || 500).send(err.message || "Internal server error.");
 });
+
+sessionStore.sync();
+db.sync();
 
 // Serve static assets in production
 if (process.env.NODE_ENV === "production") {
