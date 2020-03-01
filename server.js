@@ -50,6 +50,8 @@ app.use(passport.session());
 
 app.use("/api", require("./api"));
 
+app.use(express.static(path.join(__dirname, "public")));
+
 app.use((req, res, next) => {
   if (path.extname(req.path).length) {
     const err = new Error("Not found");
