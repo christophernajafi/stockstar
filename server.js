@@ -13,22 +13,22 @@ const app = express();
 const { findById } = require("./utils/users");
 module.exports = app;
 
-// passport.serializeUser((user, done) => done(null, user.id));
+passport.serializeUser((user, done) => done(null, user.id));
 
-// passport.deserializeUser(async (id, done) => {
-//   try {
-//     const user = await findById(id);
-//     done(null, user);
-//   } catch (err) {
-//     done(err);
-//   }
-// });
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await findById(id);
+    done(null, user);
+  } catch (err) {
+    done(err);
+  }
+});
 
-// // app.use(bodyParser.json());
-// // app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use(express.json({ extended: false }));
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 // app.use(morgan("dev"));
 
