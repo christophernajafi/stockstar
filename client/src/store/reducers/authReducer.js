@@ -6,7 +6,11 @@ import axios from "axios";
 
 // log out
 
-const initialState = {};
+const initialState = {
+  isAuth: false,
+  userId: null,
+  error: null
+};
 
 const authReducer = (state = initialState, action) => {};
 

@@ -29,6 +29,8 @@ const DUMMY_DATA = [
   }
 ];
 
+// stock, type, transaction date, shares, price
+
 const transactions = DUMMY_DATA;
 
 const Transactions = props => {
