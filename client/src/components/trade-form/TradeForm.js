@@ -26,7 +26,7 @@ const TradeForm = props => {
 
   return (
     <Fragment>
-      <div>
+      <div className="trade-box">
         Cash Balance: $
         <br />
         {/* <button className="btn btn-primary">Buy</button> */}

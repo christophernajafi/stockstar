@@ -9,14 +9,14 @@ import store from "./store";
 
 const App = () => {
   return (
-    <Provide store={store}>
+    <Provider store={store}>
       <BrowserRouter>
         <Fragment>
           <Navbar />
           <Routes />
         </Fragment>
       </BrowserRouter>
-    </Provide>
+    </Provider>
   );
 };
 

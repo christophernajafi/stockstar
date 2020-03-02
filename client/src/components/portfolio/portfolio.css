@@ -1,3 +1,31 @@
 .portfolio-container {
   margin-top: 10%;
 }
+
+.portfolio-box {
+  background-color: white;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-bottom: 1rem;
+  border-radius: 3%;
+}
+
+.portfolio-frame {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 20%;
+}
+
+@media (max-width: 800px) {
+  .portfolio-frame {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-top: 20%;
+  }
+
+  .portfolio-box {
+    margin-bottom: 10%;
+  }
+}
