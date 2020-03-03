@@ -31,37 +31,35 @@ const TradeForm = props => {
 
   return (
     <Fragment>
-      <div className="trade-box">
-        <Container>
-          Cash Balance: $
+      <Container>
+        Cash Balance: $
+        <br />
+        <Form onSubmit={handleSubmit}>
+          <Form.Group controlId="ticker">
+            <Form.Label>Ticker Symbol</Form.Label>
+            <Form.Control
+              name="ticker"
+              type="text"
+              placeholder="Enter ticker symbol"
+              onChange={handleChange}
+              value={formState.ticker}
+            />
+          </Form.Group>
           <br />
-          <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="ticker">
-              <Form.Label>Ticker Symbol</Form.Label>
-              <Form.Control
-                name="ticker"
-                type="text"
-                placeholder="Enter ticker symbol"
-                onChange={handleChange}
-                value={formState.ticker}
-              />
-            </Form.Group>
-            <br />
-            <Form.Group controlId="quantity">
-              <Form.Label>Number of Shares</Form.Label>
-              <Form.Control
-                name="quantity"
-                value={formState.quantity}
-                type="text"
-                placeholder="Enter quantity"
-                onChange={handleChange}
-              />
-            </Form.Group>
-            {/* <button className="btn btn-primary">Buy</button> */}
-            <Button type="submit">Buy</Button>
-          </Form>
-        </Container>
-      </div>
+          <Form.Group controlId="quantity">
+            <Form.Label>Number of Shares</Form.Label>
+            <Form.Control
+              name="quantity"
+              value={formState.quantity}
+              type="text"
+              placeholder="Enter quantity"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          {/* <button className="btn btn-primary">Buy</button> */}
+          <Button type="submit">Buy</Button>
+        </Form>
+      </Container>
     </Fragment>
   );
 };

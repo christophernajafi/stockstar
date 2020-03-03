@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
+import { logout } from "../../store/reducers/authReducer";
 import "./navbar.css";
 
 const NavbarComponent = props => {
@@ -22,9 +23,13 @@ const NavbarComponent = props => {
     <Fragment>
       <Nav.Link href="/portfolio">Portfolio</Nav.Link>
       <Nav.Link href="/transactions">Transactions</Nav.Link>
-      <Nav.Link href="/">Log Out</Nav.Link>
+      <Nav.Link href="/" onClick={logout}>
+        Log Out
+      </Nav.Link>
     </Fragment>
   );
+
+  const { isAuth } = props;
 
   return (
     <Navbar expand="lg" sticky="top" className="navbar">
@@ -34,15 +39,22 @@ const NavbarComponent = props => {
         <Nav className="mr-auto" />
         <Nav>
           {allLinks}
-          {unAuthLinks}
-          {authLinks}
+          {!isAuth && unAuthLinks}
+          {isAuth && authLinks}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
   );
 };
 
-export default NavbarComponent;
+const mapStateToProps = state => {
+  return {
+    isAuth: state.auth.isAut
+  };
+};
+
+export default connect(mapStateToProps)(NavbarComponent);
+// export default NavbarComponent;
 
 // bg="light"
 // style={{ color: "black", fontWeight: "bold" }}

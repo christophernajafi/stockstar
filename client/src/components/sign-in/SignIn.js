@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 // import PropTypes from "prop-types";
 
+import { login, loginSuccess } from "../../store/reducers/authReducer";
 import "./sign-in.css";
 
 const SignIn = props => {
@@ -23,6 +24,7 @@ const SignIn = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
+    login(formState);
     // eslint-disable-next-line
     props.history.push("/portfolio");
     console.log("formState: ", formState);
@@ -66,4 +68,11 @@ const SignIn = props => {
   );
 };
 
-export default SignIn;
+const mapDispatchToProps = dispatch => {
+  return {
+    loginSuccess: () => dispatch(loginSuccess)
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SignIn);
+// export default SignIn;

@@ -1,4 +1,5 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
+import { connect } from "react-redux";
 
 import TransactionsItem from "../transactions-item/TransactionsItem";
 
@@ -34,6 +35,12 @@ const DUMMY_DATA = [
 const transactions = DUMMY_DATA;
 
 const Transactions = props => {
+  const { transactions } = props;
+
+  useEffect(() => {
+    console.log(props.transactions);
+  });
+
   return (
     <Fragment>
       <h1>Transactions</h1>
@@ -42,4 +49,12 @@ const Transactions = props => {
   );
 };
 
-export default Transactions;
+const mapStateToProps = state => {
+  return {
+    // searchResults: state.search.searchResults
+    transactions: state.transactions.transactions
+  };
+};
+
+export default connect(mapStateToProps)(Transactions);
+// export default Transactions;

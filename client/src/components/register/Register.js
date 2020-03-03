@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
+import { register } from "../../store/reducers/authReducer";
 import "./register.css";
 
 const Register = props => {
@@ -26,6 +27,7 @@ const Register = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
+    register(formState);
     // eslint-disable-next-line
     props.history.push("/portfolio");
     console.log("formState: ", formState);
@@ -112,4 +114,5 @@ const Register = props => {
   );
 };
 
-export default Register;
+export default connect(null)(Register);
+// export default Register;
