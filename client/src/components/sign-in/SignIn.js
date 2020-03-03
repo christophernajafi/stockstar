@@ -1,19 +1,23 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useContext } from "react";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import axios from "axios";
 // import PropTypes from "prop-types";
 
-import { login, loginSuccess } from "../../store/reducers/authReducer";
+import AuthContext from "../../context/AuthContext";
 import "./sign-in.css";
 
 const SignIn = props => {
   const [formState, setFormState] = useState({
     email: "",
-    password: ""
+    password: "",
+    error: null
   });
 
-  const { email, password } = formState;
+  const { email, password, error } = formState;
+
+  const authContext = useContext(AuthContext);
+  const { authorize } = authContext;
 
   const handleChange = event => {
     setFormState({
@@ -22,11 +26,23 @@ const SignIn = props => {
     });
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
-    login(formState);
-    // eslint-disable-next-line
-    props.history.push("/portfolio");
+
+    try {
+      await axios.post("api/users/login/", {
+        email,
+        password
+      });
+      await authorize();
+      props.history.push("/portfolio");
+    } catch (error) {
+      setFormState({
+        ...formState,
+        error: error.response.data
+      });
+    }
+
     console.log("formState: ", formState);
   };
 
@@ -42,7 +58,7 @@ const SignIn = props => {
               onChange={handleChange}
               required
               name="email"
-              defaultValue={email}
+              value={email}
             />
           </FormGroup>
           <FormGroup controlId="password" size="lg">
@@ -52,7 +68,7 @@ const SignIn = props => {
               type="password"
               required
               name="password"
-              defaultValue={password}
+              value={password}
             />
           </FormGroup>
           <Button block size="lg" disabled={!(email && password)} type="submit">
@@ -62,17 +78,11 @@ const SignIn = props => {
           <p className="my-1 text-center">
             Don't have an account? <Link to="/register">Register</Link>
           </p>
+          <p>{error}</p>
         </form>
       </div>
     </Fragment>
   );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    loginSuccess: () => dispatch(loginSuccess)
-  };
-};
-
-export default connect(null, mapDispatchToProps)(SignIn);
-// export default SignIn;
+export default SignIn;

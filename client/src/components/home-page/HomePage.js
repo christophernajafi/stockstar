@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from "react";
-// import { connect } from "react-redux";
 
 import "./home-page.css";
 
@@ -28,4 +27,3 @@ const HomePage = props => {
 };
 
 export default HomePage;
-// export default connect(mapStateToProps)(HomePage);

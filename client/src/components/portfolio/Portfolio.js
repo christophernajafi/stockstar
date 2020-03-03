@@ -1,6 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Button, Container, Table } from "react-bootstrap";
-import { connect } from "react-redux";
 
 import TradeModal from "../trade-modal/TradeModal";
 import PortfolioItem from "../portfolio-item/PortfolioItem";
@@ -33,5 +32,4 @@ const Portfolio = props => {
   );
 };
 
-export default connect(null)(Portfolio);
-// export default Portfolio;
+export default Portfolio;

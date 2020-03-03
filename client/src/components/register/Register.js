@@ -1,10 +1,9 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useContext } from "react";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
-import { connect } from "react-redux";
-import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
-import { register } from "../../store/reducers/authReducer";
+import AuthContext from "../../context/AuthContext";
 import "./register.css";
 
 const Register = props => {
@@ -13,10 +12,21 @@ const Register = props => {
     lastName: "",
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
+    error: null
   });
 
-  const { firstName, lastName, email, password, confirmPassword } = formState;
+  const {
+    firstName,
+    lastName,
+    email,
+    password,
+    confirmPassword,
+    error
+  } = formState;
+
+  const authContext = useContext(AuthContext);
+  const { authorize } = authContext;
 
   const handleChange = event => {
     setFormState({
@@ -25,11 +35,32 @@ const Register = props => {
     });
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
-    register(formState);
-    // eslint-disable-next-line
-    props.history.push("/portfolio");
+
+    if (password !== confirmPassword) {
+      setFormState({
+        ...formState,
+        error: "Password and confirmed password do not match."
+      });
+    } else {
+      try {
+        await axios.post("api/users/", {
+          firstName,
+          lastName,
+          email,
+          password
+        });
+        await authorize();
+        props.history.push("/portfolio");
+      } catch (error) {
+        setFormState({
+          ...formState,
+          error: error.response.data
+        });
+      }
+    }
+
     console.log("formState: ", formState);
   };
 
@@ -41,58 +72,53 @@ const Register = props => {
             <FormControl
               autoFocus
               type="text"
-              // value={firstName}
+              name="firstName"
+              value={firstName}
               onChange={handleChange}
               placeholder="First Name"
               required
-              name="firstName"
-              defaultValue={firstName}
             />
           </FormGroup>
           <FormGroup controlId="lastName" size="lg">
             <FormControl
               autoFocus
               type="text"
-              // value={lastName}
+              name="lastName"
+              value={lastName}
               onChange={handleChange}
               placeholder="Last Name"
               required
-              name="lastName"
-              defaultValue={lastName}
             />
           </FormGroup>
           <FormGroup controlId="email" size="lg">
             <FormControl
               autoFocus
               type="email"
-              // value={email}
+              value={email}
               onChange={handleChange}
               placeholder="Email"
               required
               name="email"
-              defaultValue={email}
             />
           </FormGroup>
           <FormGroup controlId="password" size="lg">
             <FormControl
-              // value={password}
+              name="password"
+              value={password}
               onChange={handleChange}
               type="password"
               placeholder="Password"
               required
-              name="password"
-              defaultValue={password}
             />
           </FormGroup>
           <FormGroup controlId="confirmPassword" size="lg">
             <FormControl
-              // value={password}
+              name="confirmPassword"
+              value={confirmPassword}
               onChange={handleChange}
               type="password"
               placeholder="Confirm Password"
               required
-              name="confirmPassword"
-              defaultValue={confirmPassword}
             />
           </FormGroup>
           <Button
@@ -108,11 +134,11 @@ const Register = props => {
           <p className="my-1 text-center">
             Already have an account? <Link to="/sign-in">Sign In</Link>
           </p>
+          <p>{error}</p>
         </form>
       </div>
     </Fragment>
   );
 };
 
-export default connect(null)(Register);
-// export default Register;
+export default Register;

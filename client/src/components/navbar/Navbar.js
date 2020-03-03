@@ -1,11 +1,19 @@
-import React, { Fragment } from "react";
-import { connect } from "react-redux";
+import React, { Fragment, useContext, useEffect } from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
-import { logout } from "../../store/reducers/authReducer";
+import AuthContext from "../../context/AuthContext";
 import "./navbar.css";
 
 const NavbarComponent = props => {
+  const authContext = useContext(AuthContext);
+  const { isAuth, logout, authorize } = authContext;
+
+  // console.log("auth: ", isAuth);
+
+  useEffect(() => {
+    authorize();
+  }, []);
+
   const allLinks = (
     <Fragment>
       <Nav.Link href="/about">About</Nav.Link>
@@ -29,8 +37,6 @@ const NavbarComponent = props => {
     </Fragment>
   );
 
-  const { isAuth } = props;
-
   return (
     <Navbar expand="lg" sticky="top" className="navbar">
       <Navbar.Brand href="/">StockStar</Navbar.Brand>
@@ -47,14 +53,7 @@ const NavbarComponent = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    isAuth: state.auth.isAut
-  };
-};
-
-export default connect(mapStateToProps)(NavbarComponent);
-// export default NavbarComponent;
+export default NavbarComponent;
 
 // bg="light"
 // style={{ color: "black", fontWeight: "bold" }}

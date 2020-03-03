@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect } from "react";
-import { connect } from "react-redux";
 
 import TransactionsItem from "../transactions-item/TransactionsItem";
 
@@ -56,5 +55,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Transactions);
-// export default Transactions;
+export default Transactions;

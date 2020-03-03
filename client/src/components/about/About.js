@@ -12,7 +12,7 @@ const About = () => {
           and sell stocks, keep track of their holdings in a portfolio, and see
           transaction history.
         </p>
-        <p>
+        <div>
           <h3>Technology Stack</h3>
           <ul className="about-ul">
             <li>React</li>
@@ -25,7 +25,7 @@ const About = () => {
             <li>Passport</li>
             <li>IEX API</li>
           </ul>
-        </p>
+        </div>
         <p>
           If you would like to see my other projects, please visit{" "}
           <a
