@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const initialState = {
-  userHoldings: [],
+  holdings: [],
   error: null
 };
 

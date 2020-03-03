@@ -6,7 +6,6 @@ const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 const LOGIN_FAIL = "LOGIN_FAIL";
 const LOGOUT = "LOGOUT";
 
-// register
 export const register = registrationData => async dispatch => {
   try {
     await axios.post("api/users/", registrationData);
@@ -19,7 +18,6 @@ export const register = registrationData => async dispatch => {
   }
 };
 
-// log in
 export const authorize = async dispatch => {
   try {
     const user = await axios.get("/api/auth/me");
@@ -32,7 +30,6 @@ export const authorize = async dispatch => {
   }
 };
 
-// log out
 export const logout = async dispatch => {
   try {
     dispatch({
