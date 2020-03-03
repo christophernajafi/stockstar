@@ -1,13 +1,26 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Button, Form, Container } from "react-bootstrap";
+import axios from "axios";
 
+import AuthContext from "../../context/AuthContext";
 import "./trade-form.css";
 
 const TradeForm = props => {
   const [formState, setFormState] = useState({
     ticker: "",
-    quantity: ""
+    quantity: "",
+    transactionType: "BUY",
+    error: null,
+    cashBalance: null
   });
+
+  useEffect(() => {
+    getCashBalance();
+  }, []);
+
+  const { ticker, quantity, transactionType, error, cashBalance } = formState;
+
+  const userId = 1;
 
   const handleChange = event => {
     setFormState({
@@ -16,13 +29,37 @@ const TradeForm = props => {
     });
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
-    // props.history.push("/portfolio");
-    console.log("formState: ", formState);
+
+    try {
+      await axios.post(`api/users/${userId}/transactions`, {
+        ticker,
+        quantity,
+        transactionType
+      });
+    } catch (error) {
+      setFormState({
+        ...formState,
+        error: error.response.data
+      });
+    }
   };
 
-  // const { classes, userCashBalance, error } = this.props;
+  const getCashBalance = async userId => {
+    // const { data } = await axios.get(`/api/users/${userId}`);
+    const { data } = await axios.get(`/api/users/1`);
+    console.log(data);
+    const balance = Number(data.user.user.balance);
+    console.log("b", balance);
+
+    setFormState({
+      ...formState,
+      cashBalance: balance
+    });
+    console.log("state", formState);
+    console.log("cash: ", cashBalance);
+  };
 
   const isValidQuantity =
     Number(formState.quantity) > 0 && !String(formState.quantity).includes(".");
@@ -32,7 +69,7 @@ const TradeForm = props => {
   return (
     <Fragment>
       <Container>
-        Cash Balance: $
+        Cash Balance: ${cashBalance}
         <br />
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="ticker">
@@ -56,9 +93,11 @@ const TradeForm = props => {
               onChange={handleChange}
             />
           </Form.Group>
-          {/* <button className="btn btn-primary">Buy</button> */}
-          <Button type="submit">Buy</Button>
+          <Button type="submit" disabled={!(quantity && ticker)}>
+            Buy
+          </Button>
         </Form>
+        <p>{error}</p>
       </Container>
     </Fragment>
   );
