@@ -12,7 +12,7 @@ const NavbarComponent = props => {
 
   useEffect(() => {
     authorize();
-  }, []);
+  }, [authorize]);
 
   const allLinks = (
     <Fragment>

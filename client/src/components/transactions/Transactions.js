@@ -1,70 +1,47 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useContext } from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import axios from "axios";
 
+import AuthContext from "../../context/AuthContext";
 import TransactionsItem from "../transactions-item/TransactionsItem";
-
-const DUMMY_DATA = [
-  {
-    type: "BUY",
-    ticker: "AAPL",
-    shares: 100,
-    price: 100.0
-  },
-  {
-    type: "BUY",
-    ticker: "AAPL",
-    shares: 100,
-    price: 100.0
-  },
-  {
-    type: "BUY",
-    ticker: "AAPL",
-    shares: 100,
-    price: 100.0
-  },
-  {
-    type: "BUY",
-    ticker: "AAPL",
-    shares: 100,
-    price: 100.0
-  }
-];
+import "./transactions.css";
 
 // stock, type, transaction date, shares, price
 
 const Transactions = props => {
   const [transactions, setTransactions] = useState([]);
 
-  const userId = "1";
+  const authContext = useContext(AuthContext);
+  const { userId, authorize } = authContext;
 
-  const getTransactions = async userId => {
-    try {
-      // const { data } = await axios.get(`api/users/${userId}/transactions`);
-      const { data } = await axios.get(`api/users/1/transactions`);
+  console.log(typeof userId);
 
-      console.log("transactions: ", data);
-
-      console.log("state: ", transactions);
-
-      setTransactions(data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  console.log(userId);
 
   useEffect(() => {
     getTransactions();
   }, []);
 
-  return (
-    // <Fragment>
-    //   <h1>/h1>
-    //   {/* {transactions.length > 0 && transactions.map()} */}
-    // </Fragment>
+  const getTransactions = async userId => {
+    try {
+      // const { data } = await axios.get(
+      //   `api/users/${userId.toString()}/transactions`
+      // );
+      const { data } = await axios.get(`api/users/1/transactions`);
 
-    <Container className="portfolio-container">
-      <h1>Transactions</h1>
+      console.log("transactions: ", data);
+
+      setTransactions(data);
+
+      console.log("state: ", transactions);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  return (
+    <Container className="transactions-container">
+      <h2 className="text-center">Transactions</h2>
 
       <Table striped bordered hover>
         <thead>
@@ -86,13 +63,6 @@ const Transactions = props => {
       </Table>
     </Container>
   );
-};
-
-const mapStateToProps = state => {
-  return {
-    // searchResults: state.search.searchResults
-    transactions: state.transactions.transactions
-  };
 };
 
 export default Transactions;
