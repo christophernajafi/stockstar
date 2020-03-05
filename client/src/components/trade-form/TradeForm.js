@@ -1,111 +1,86 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Component, Fragment } from "react";
 import { Button, Form, Container } from "react-bootstrap";
-import axios from "axios";
 
 import AuthContext from "../../context/AuthContext";
 import "./trade-form.css";
 
-const TradeForm = props => {
-  const [formState, setFormState] = useState({
-    ticker: "",
-    quantity: "",
-    transactionType: "BUY",
-    error: null,
-    cashBalance: null
-  });
+// Child component of Portfolio
+class TradeForm extends Component {
+  static contextType = AuthContext;
 
-  useEffect(() => {
-    getCashBalance();
-  }, []);
+  constructor(props) {
+    super(props);
+    this.state = {
+      ticker: "",
+      quantity: 1
+    };
+  }
 
-  const { ticker, quantity, transactionType, error, cashBalance } = formState;
-
-  const userId = 1;
-
-  const handleChange = event => {
-    setFormState({
-      ...formState,
-      [event.target.name]: event.target.value
-    });
-  };
-
-  const handleSubmit = async event => {
+  handleSubmit = async event => {
     event.preventDefault();
-
-    try {
-      await axios.post(`api/users/${userId}/transactions`, {
-        ticker,
-        quantity,
-        transactionType
-      });
-    } catch (error) {
-      setFormState({
-        ...formState,
-        error: error.response.data
-      });
-    }
+    this.setState({ quantity: 1, ticker: "" });
+    // adding a transaction handled in parent component
+    await this.props.onSubmit(
+      this.state.ticker,
+      Number(this.state.quantity),
+      "Buy"
+    );
   };
 
-  const getCashBalance = async userId => {
-    // const { data } = await axios.get(`/api/users/${userId}`);
-    const { data } = await axios.get(`/api/users/1`);
-    console.log(data);
-    const balance = Number(data.user.user.balance);
-    console.log("b", balance);
+  render() {
+    // eslint-disable-next-line
+    const { userCashBalance, error } = this.props;
+    const validQuantity =
+      Number(this.state.quantity) > 0 &&
+      !String(this.state.quantity).includes(".");
+    const emptyTicker = this.state.ticker === "";
 
-    setFormState({
-      ...formState,
-      cashBalance: balance
-    });
-    console.log("state", formState);
-    console.log("cash: ", cashBalance);
-  };
-
-  const isValidQuantity =
-    Number(formState.quantity) > 0 && !String(formState.quantity).includes(".");
-
-  const isEmptyTicker = formState.ticker === "";
-
-  return (
-    <Fragment>
-      <Container>
-        Cash Balance: $
-        {cashBalance &&
-          cashBalance.toLocaleString(undefined, {
+    return (
+      <Fragment>
+        <Container>
+          Cash Balance: $
+          {userCashBalance.toLocaleString(undefined, {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
           })}
-        <br />
-        <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="ticker">
-            <Form.Label>Ticker Symbol</Form.Label>
-            <Form.Control
-              name="ticker"
-              type="text"
-              placeholder="Enter ticker symbol"
-              onChange={handleChange}
-              value={formState.ticker}
-            />
-          </Form.Group>
           <br />
-          <Form.Group controlId="quantity">
-            <Form.Label>Number of Shares</Form.Label>
-            <Form.Control
-              name="quantity"
-              value={formState.quantity}
-              type="text"
-              placeholder="Enter quantity"
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Button type="submit" disabled={!(quantity && ticker)}>
-            Buy
-          </Button>
-        </Form>
-        <p>{error}</p>
-      </Container>
-    </Fragment>
-  );
-};
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Group controlId="ticker">
+              <Form.Label>Ticker Symbol</Form.Label>
+              <Form.Control
+                name="ticker"
+                type="text"
+                placeholder="Enter ticker symbol"
+                onChange={event =>
+                  this.setState({ ...this.state, ticker: event.target.value })
+                }
+                value={this.state.ticker}
+              />
+            </Form.Group>
+            <br />
+            <Form.Group controlId="quantity">
+              <Form.Label>Number of Shares</Form.Label>
+              <Form.Control
+                name="quantity"
+                value={this.state.quantity}
+                type="text"
+                placeholder="Enter quantity"
+                onChange={event =>
+                  this.setState({
+                    ...this.state,
+                    quantity: event.target.value
+                  })
+                }
+              />
+            </Form.Group>
+            <Button type="submit" disabled={!validQuantity || emptyTicker}>
+              Buy
+            </Button>
+          </Form>
+        </Container>
+      </Fragment>
+    );
+  }
+}
 
 export default TradeForm;

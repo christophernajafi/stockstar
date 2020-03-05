@@ -41,7 +41,7 @@ npm install && npm run install-client
 npm run dev
 ```
 
-## Screenshots
+<!-- ## Screenshots -->
 
 ---
 

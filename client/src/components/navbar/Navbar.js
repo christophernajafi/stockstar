@@ -1,5 +1,5 @@
 import React, { Fragment, useContext, useEffect } from "react";
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 
 import AuthContext from "../../context/AuthContext";
 import "./navbar.css";
@@ -7,8 +7,6 @@ import "./navbar.css";
 const NavbarComponent = props => {
   const authContext = useContext(AuthContext);
   const { isAuth, logout, authorize } = authContext;
-
-  // console.log("auth: ", isAuth);
 
   useEffect(() => {
     authorize();
@@ -54,6 +52,3 @@ const NavbarComponent = props => {
 };
 
 export default NavbarComponent;
-
-// bg="light"
-// style={{ color: "black", fontWeight: "bold" }}

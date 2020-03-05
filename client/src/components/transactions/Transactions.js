@@ -1,5 +1,5 @@
-import React, { Fragment, useState, useEffect, useContext } from "react";
-import { Button, Container, Table } from "react-bootstrap";
+import React, { useState, useEffect, useContext } from "react";
+import { Container, Table } from "react-bootstrap";
 import axios from "axios";
 
 import AuthContext from "../../context/AuthContext";
@@ -9,31 +9,20 @@ import "./transactions.css";
 // stock, type, transaction date, shares, price
 
 const Transactions = props => {
+  const authContext = useContext(AuthContext);
   const [transactions, setTransactions] = useState([]);
 
-  const authContext = useContext(AuthContext);
-  const { userId, authorize } = authContext;
-
-  console.log(typeof userId);
-
-  console.log(userId);
+  const { userId } = authContext;
 
   useEffect(() => {
-    getTransactions();
-  }, []);
+    getTransactions(userId);
+  }, [userId]);
 
   const getTransactions = async userId => {
     try {
-      // const { data } = await axios.get(
-      //   `api/users/${userId.toString()}/transactions`
-      // );
-      const { data } = await axios.get(`api/users/1/transactions`);
-
-      console.log("transactions: ", data);
+      const { data } = await axios.get(`api/users/${userId}/transactions`);
 
       setTransactions(data);
-
-      console.log("state: ", transactions);
     } catch (err) {
       console.error(err);
     }

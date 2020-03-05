@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Container, Jumbotron } from "react-bootstrap";
 
 import "./about.css";
