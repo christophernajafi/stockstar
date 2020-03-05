@@ -6,8 +6,6 @@ import AuthContext from "../../context/AuthContext";
 import TransactionsItem from "../transactions-item/TransactionsItem";
 import "./transactions.css";
 
-// stock, type, transaction date, shares, price
-
 const Transactions = props => {
   const authContext = useContext(AuthContext);
   const [transactions, setTransactions] = useState([]);
@@ -45,7 +43,7 @@ const Transactions = props => {
         <tbody>
           {transactions.length > 0 &&
             transactions.map(item => {
-              console.log(item);
+              // console.log(item);
               return <TransactionsItem key={item.id} data={item} />;
             })}
         </tbody>
