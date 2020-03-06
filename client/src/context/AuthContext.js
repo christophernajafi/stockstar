@@ -22,7 +22,7 @@ class AuthProvider extends React.Component {
           userId: Number(user.data.user)
         },
         () => {
-          console.log(user.data.user);
+          // console.log(user.data.user);
         }
       );
     } catch (err) {
