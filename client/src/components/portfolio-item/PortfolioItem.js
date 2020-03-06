@@ -3,21 +3,19 @@ import React, { Fragment } from "react";
 import { formatDollar } from "../../utils";
 
 const PortfolioItem = props => {
-  const { ticker, shares, price, color } = props;
+  const { ticker, quantity, color, currentValue } = props.data;
 
-  console.log(props);
-
-  const green = ".text-success";
-  const red = ".text-danger";
-  const grey = ".text-secondary";
+  const green = "text-success";
+  const red = "text-danger";
+  const grey = "text-secondary";
 
   let style = grey;
 
-  color === "red" ? (style = red) : (style = green);
-
-  // {
-  // <span className=`${style}`></span>
-  // }
+  if (color === "red") {
+    style = red;
+  } else if (color === "green") {
+    style = green;
+  }
 
   return (
     <Fragment>
@@ -25,9 +23,9 @@ const PortfolioItem = props => {
         <td>
           <span className={`${style}`}>{ticker}</span>
         </td>
-        <td>{shares}</td>
+        <td>{quantity}</td>
         <td>
-          <span className={`${style}`}>{formatDollar(shares * price)}</span>
+          <span className={`${style}`}>{formatDollar(currentValue)}</span>
         </td>
       </tr>
     </Fragment>

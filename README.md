@@ -11,7 +11,8 @@ A web-based stock application that enables a user to buy stocks, keep track of t
 ### Front End
 
 - React
-- Redux
+- React Hooks
+- React Context
 - Bootstrap
 - Font Awesome
 - Google Analytics

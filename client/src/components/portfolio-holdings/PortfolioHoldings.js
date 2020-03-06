@@ -7,8 +7,6 @@ import PortfolioItem from "../portfolio-item/PortfolioItem";
 const PortfolioHoldings = props => {
   const { totalValue, userHoldings } = props;
 
-  console.log("props in portfolio holdings: ", props);
-
   return (
     <Container className="portfolio-container">
       <h5>
@@ -37,11 +35,6 @@ const PortfolioHoldings = props => {
                 } else return 1;
               })
               .map(eachHolding => {
-                // let color = eachHolding.color;
-                // let style = classes.tableCellgrey;
-                // color === 'red'
-                //   ? (style = classes.tableCellred)
-                //   : (style = classes.tableCellgreen);
                 return (
                   <PortfolioItem key={eachHolding.id} data={eachHolding} />
                 );
