@@ -2,6 +2,12 @@
   background-color: white;
   padding: 25px 50px 75px 50px;
   border-radius: 3%;
-  margin-left: 5%;
-  margin-right: 5%;
+}
+
+@media (max-width: 800px) {
+  .trade-box {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 10%;
+  }
 }

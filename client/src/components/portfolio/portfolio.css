@@ -2,19 +2,19 @@
   margin-top: 10%;
 }
 
+.portfolio-frame {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 20%;
+}
+
 .portfolio-box {
   background-color: white;
   border-radius: 3%;
   padding-left: 3%;
   padding-right: 3%;
   padding-bottom: 1rem;
-}
-
-.portfolio-frame {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin-top: 20%;
 }
 
 @media (max-width: 800px) {
