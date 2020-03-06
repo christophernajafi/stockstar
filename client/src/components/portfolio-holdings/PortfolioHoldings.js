@@ -9,7 +9,7 @@ const PortfolioHoldings = props => {
 
   return (
     <Container className="portfolio-container">
-      <h5>
+      <h5 className="text-center">
         Portfolio Value: $
         {totalValue.toLocaleString(undefined, {
           minimumFractionDigits: 2,

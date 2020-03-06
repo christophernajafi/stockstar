@@ -4,10 +4,10 @@
 
 .portfolio-box {
   background-color: white;
-  margin-left: 5%;
-  margin-right: 5%;
-  padding-bottom: 1rem;
   border-radius: 3%;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-bottom: 1rem;
 }
 
 .portfolio-frame {
@@ -26,6 +26,8 @@
   }
 
   .portfolio-box {
+    margin-left: 5%;
+    margin-right: 5%;
     margin-bottom: 10%;
   }
 }
