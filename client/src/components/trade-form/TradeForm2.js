@@ -28,7 +28,7 @@ const TradeForm = props => {
 
   return (
     <Fragment>
-      <h5>
+      <h5 className="text-center">
         Cash Balance: $
         {userCashBalance.toLocaleString(undefined, {
           minimumFractionDigits: 2,
