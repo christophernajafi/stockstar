@@ -29,11 +29,13 @@ const TradeForm = props => {
   return (
     <Fragment>
       <Container>
-        Cash Balance: $
-        {userCashBalance.toLocaleString(undefined, {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        })}
+        <h5>
+          Cash Balance: $
+          {userCashBalance.toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          })}
+        </h5>
         <br />
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="ticker">

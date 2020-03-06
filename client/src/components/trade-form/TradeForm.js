@@ -38,11 +38,13 @@ class TradeForm extends Component {
     return (
       <Fragment>
         <Container>
-          Cash Balance: $
-          {userCashBalance.toLocaleString(undefined, {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-          })}
+          <h5>
+            Cash Balance: $
+            {userCashBalance.toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2
+            })}
+          </h5>
           <br />
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="ticker">
