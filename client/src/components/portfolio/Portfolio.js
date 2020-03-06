@@ -24,15 +24,9 @@ const Portfolio = props => {
   });
 
   const {
-    // eslint-disable-next-line
     userHoldings,
-    // eslint-disable-next-line
-    userTransactions,
-    // eslint-disable-next-line
     userCashBalance,
-    // eslint-disable-next-line
     error,
-    // eslint-disable-next-line
     canUpdatePrices
   } = portfolioState;
 
@@ -69,9 +63,7 @@ const Portfolio = props => {
   };
 
   const fetchUpdatedStockPrices = async () => {
-    const updatedHoldings = await appendCurrentPrice(
-      portfolioState.userHoldings
-    );
+    const updatedHoldings = await appendCurrentPrice(userHoldings);
     setPortfolioState({
       ...portfolioState,
       userHoldings: updatedHoldings
@@ -136,11 +128,7 @@ const Portfolio = props => {
   // set a timer to continuously grab up to date stock price
   const setTimer = () => {
     const timer = setIntervalAsync(async () => {
-      if (
-        !portfolioState.canUpdatePrices ||
-        portfolioState.userHoldings.length < 1 ||
-        !isAuth
-      ) {
+      if (!canUpdatePrices || userHoldings.length < 1 || !isAuth) {
         clearIntervalAsync(timer);
       }
       await fetchUpdatedStockPrices();
@@ -175,22 +163,22 @@ const Portfolio = props => {
     }, 0);
   };
 
-  const totalValue = calculateTotalValue(portfolioState.userHoldings);
+  const totalValue = calculateTotalValue(userHoldings);
 
   return (
     <Fragment>
       <div className="portfolio-frame">
         <div className="portfolio-box">
           <PortfolioHoldings
-            userHoldings={portfolioState.userHoldings}
+            userHoldings={userHoldings}
             totalValue={totalValue}
           />
         </div>
         <div className="trade-box">
           <TradeForm
-            userCashBalance={portfolioState.userCashBalance}
+            userCashBalance={userCashBalance}
             onSubmit={handleNewTransaction}
-            error={portfolioState.error}
+            error={error}
           />
         </div>
       </div>
