@@ -16,7 +16,8 @@ const About = () => {
           <h3>Technology Stack</h3>
           <ul className="about-ul">
             <li>React</li>
-            <li>Redux</li>
+            <li>React Hooks</li>
+            <li>React Context</li>
             <li>Bootstrap</li>
             <li>Node.js</li>
             <li>Express</li>
