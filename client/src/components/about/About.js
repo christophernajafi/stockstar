@@ -9,7 +9,7 @@ const About = () => {
       <Jumbotron>
         <p>
           StockStar is web-based stock portfolio app that enables a user to buy
-          and sell stocks, keep track of their holdings in a portfolio, and see
+          stocks, keep track of their holdings in a portfolio, and see their
           transaction history.
         </p>
         <div>
