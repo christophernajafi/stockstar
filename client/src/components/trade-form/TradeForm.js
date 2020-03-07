@@ -79,9 +79,12 @@ class TradeForm extends Component {
               Buy
             </Button>
           </div>
-          <p className="text-center trade-error text-danger">
-            {error && <div> {error.response.data} </div>}
-          </p>
+          {error && (
+            <p className="text-center trade-error text-danger">
+              {" "}
+              {error.response.data}{" "}
+            </p>
+          )}
         </Form>
       </Fragment>
     );
