@@ -73,6 +73,9 @@ const TradeForm = props => {
             Buy
           </Button>
         </div>
+        <p className="text-center trade-error text-danger">
+          {error && <div> {error.response.data} </div>}
+        </p>
       </Form>
     </Fragment>
   );

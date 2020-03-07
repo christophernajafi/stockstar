@@ -122,6 +122,12 @@ const Portfolio = props => {
         ...portfolioState,
         error
       });
+      setTimeout(() => {
+        setPortfolioState({
+          ...portfolioState,
+          error: null
+        });
+      }, 3000);
     }
   };
 
