@@ -42,8 +42,6 @@ const SignIn = props => {
         error: error.response.data
       });
     }
-
-    console.log("formState: ", formState);
   };
 
   return (
