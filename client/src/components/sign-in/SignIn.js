@@ -76,7 +76,9 @@ const SignIn = props => {
           <p className="my-1 text-center">
             Don't have an account? <Link to="/register">Register</Link>
           </p>
-          <p>{error}</p>
+          {error && (
+            <p className="text-center sign-in-error text-danger"> {error} </p>
+          )}
         </form>
       </div>
     </Fragment>

@@ -2,6 +2,10 @@
   margin-top: 20%;
 }
 
+.register-error {
+  margin-top: 10%;
+}
+
 @media all and (min-width: 480px) {
   .register {
     padding: 60px 0;

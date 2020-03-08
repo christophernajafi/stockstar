@@ -2,6 +2,10 @@
   margin-top: 20%;
 }
 
+.sign-in-error {
+  margin-top: 10%;
+}
+
 @media all and (min-width: 480px) {
   .sign-in {
     padding: 60px 0;

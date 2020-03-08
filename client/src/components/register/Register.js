@@ -134,7 +134,9 @@ const Register = props => {
           <p className="my-1 text-center">
             Already have an account? <Link to="/sign-in">Sign In</Link>
           </p>
-          <p>{error}</p>
+          {error && (
+            <p className="text-center register-error text-danger"> {error} </p>
+          )}
         </form>
       </div>
     </Fragment>
