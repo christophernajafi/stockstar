@@ -24,5 +24,6 @@
 
 .navbar a:hover {
   /* color: var(--light-color); */
-  color: #f4f4f4;
+  /* color: #f4f4f4; */
+  transform: scale(1.05);
 }
