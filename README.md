@@ -38,6 +38,10 @@ cd stockstar
 # Install node modules for both server and client
 npm install && npm run install-client
 
+# Before starting app:
+# Make sure PostgreSQL is running
+# Create database called 'stockstar'
+
 # Start app locally
 npm run dev
 ```
