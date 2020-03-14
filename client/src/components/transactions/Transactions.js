@@ -27,28 +27,30 @@ const Transactions = props => {
   };
 
   return (
-    <Container className="transactions-container">
-      <h2 className="text-center">Transactions</h2>
+    <div className="transactions-frame">
+      <Container className="transactions-container">
+        <h2 className="text-center">Transactions</h2>
 
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Stock</th>
-            <th>Type</th>
-            <th>Transaction Date</th>
-            <th>Shares</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {transactions.length > 0 &&
-            transactions.map(item => {
-              // console.log(item);
-              return <TransactionsItem key={item.id} data={item} />;
-            })}
-        </tbody>
-      </Table>
-    </Container>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Stock</th>
+              <th>Type</th>
+              <th>Transaction Date</th>
+              <th>Shares</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {transactions.length > 0 &&
+              transactions.map(item => {
+                // console.log(item);
+                return <TransactionsItem key={item.id} data={item} />;
+              })}
+          </tbody>
+        </Table>
+      </Container>
+    </div>
   );
 };
 

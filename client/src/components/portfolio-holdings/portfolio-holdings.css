@@ -1,15 +1,14 @@
-.trade-box {
+.portfolio-box {
   background-color: white;
-  padding: 25px 50px 50px 50px;
   border-radius: 3%;
-}
-
-.trade-error {
-  margin-top: 20%;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
 
 @media (max-width: 800px) {
-  .trade-box {
+  .portfolio-box {
     margin-left: 5%;
     margin-right: 5%;
     margin-bottom: 10%;

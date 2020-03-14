@@ -174,12 +174,10 @@ const Portfolio = props => {
   return (
     <Fragment>
       <div className="portfolio-frame">
-        <div className="portfolio-box">
-          <PortfolioHoldings
-            userHoldings={userHoldings}
-            totalValue={totalValue}
-          />
-        </div>
+        <PortfolioHoldings
+          userHoldings={userHoldings}
+          totalValue={totalValue}
+        />
         <div className="trade-box">
           <TradeForm
             userCashBalance={userCashBalance}

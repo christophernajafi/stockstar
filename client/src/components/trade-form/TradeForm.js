@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Button, Form } from "react-bootstrap";
 
 import AuthContext from "../../context/AuthContext";
@@ -36,7 +36,7 @@ class TradeForm extends Component {
     const emptyTicker = this.state.ticker === "";
 
     return (
-      <Fragment>
+      <div className="trade-box">
         <h5 className="text-center">
           Cash Balance: $
           {userCashBalance.toLocaleString(undefined, {
@@ -86,7 +86,7 @@ class TradeForm extends Component {
             </p>
           )}
         </Form>
-      </Fragment>
+      </div>
     );
   }
 }
