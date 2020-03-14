@@ -2,12 +2,10 @@
 
 /* Global Styles */
 :root {
-  --primary-color: #003699;
-  --secondary-color: #8fbc8f;
-  --dark-color: #333333;
-  --light-color: #f4f4f4;
-  --danger-color: #dc3545;
-  --success-color: #28a745;
+  --text-color: black;
+  --background-color: #65ccb8;
+  --link-color: #003699;
+  --dark-link-color: #333333;
 }
 
 * {
@@ -20,21 +18,19 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  /* background-color: var(--secondary-color); */
-  background-color: #65ccb8;
-  color: #333;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 a {
-  color: var(--primary-color);
+  color: var(--link-color);
   text-decoration: none;
 }
 
 a:hover {
-  color: #666;
+  color: var(--dark-link-color);
 }
 
 .jumbotron {
-  /* background-color: var(--secondary-color); */
-  background-color: #65ccb8;
+  background-color: var(--background-color);
 }

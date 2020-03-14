@@ -34,15 +34,11 @@ i {
 
 @media (max-width: 800px) {
   .badge-container {
-    display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     margin-top: 35%;
   }
 
   .badge {
-    display: flex;
-    flex-direction: column;
     margin: 0;
   }
 }
