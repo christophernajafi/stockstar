@@ -26,3 +26,10 @@
     background-color: transparent;
   }
 }
+
+@media (min-width: 992px) {
+  .transactions-container {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+}
