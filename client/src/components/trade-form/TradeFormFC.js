@@ -1,8 +1,13 @@
-import React, { Fragment, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Form } from "react-bootstrap";
 
 import AuthContext from "../../context/AuthContext";
 import "./trade-form.css";
+
+/*
+  This component is a function component version of TradeForm.js
+  It is not currently being used.
+*/
 
 // Child component of Portfolio
 const TradeForm = props => {
@@ -27,7 +32,7 @@ const TradeForm = props => {
   const emptyTicker = ticker === "";
 
   return (
-    <Fragment>
+    <div className="trade-box">
       <h5 className="text-center">
         Cash Balance: $
         {userCashBalance.toLocaleString(undefined, {
@@ -80,7 +85,7 @@ const TradeForm = props => {
           </p>
         )}
       </Form>
-    </Fragment>
+    </div>
   );
 };
 
