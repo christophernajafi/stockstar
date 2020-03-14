@@ -178,13 +178,11 @@ const Portfolio = props => {
           userHoldings={userHoldings}
           totalValue={totalValue}
         />
-        <div className="trade-box">
-          <TradeForm
-            userCashBalance={userCashBalance}
-            onSubmit={handleNewTransaction}
-            error={error}
-          />
-        </div>
+        <TradeForm
+          userCashBalance={userCashBalance}
+          onSubmit={handleNewTransaction}
+          error={error}
+        />
       </div>
     </Fragment>
   );

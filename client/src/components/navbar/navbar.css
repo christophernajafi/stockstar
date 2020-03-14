@@ -5,7 +5,6 @@
   padding: 0.7rem 2rem;
   z-index: 1;
   width: 100%;
-  /* border-bottom: solid 1px var(--primary-color); */
   border-bottom: solid 1px #182628;
   opacity: 0.9;
   margin-bottom: 1rem;
@@ -23,7 +22,5 @@
 }
 
 .navbar a:hover {
-  /* color: var(--light-color); */
-  /* color: #f4f4f4; */
   transform: scale(1.05);
 }
