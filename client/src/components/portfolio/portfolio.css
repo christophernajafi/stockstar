@@ -8,9 +8,7 @@
 
 @media (max-width: 800px) {
   .portfolio-frame {
-    display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     height: auto;
   }
 }
