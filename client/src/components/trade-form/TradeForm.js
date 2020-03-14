@@ -28,7 +28,6 @@ class TradeForm extends Component {
   };
 
   render() {
-    // eslint-disable-next-line
     const { userCashBalance, error } = this.props;
     const validQuantity =
       Number(this.state.quantity) > 0 &&
