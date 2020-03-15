@@ -31,7 +31,7 @@ const Transactions = props => {
       <Container className="transactions-container">
         <h2 className="text-center">Transactions</h2>
 
-        <Table striped bordered hover>
+        <Table striped bordered hover responsive>
           <thead>
             <tr>
               <th>Stock</th>

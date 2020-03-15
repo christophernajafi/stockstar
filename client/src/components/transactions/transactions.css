@@ -22,12 +22,6 @@
   }
 }
 
-@media (max-width: 575.98px) {
-  .transactions-container {
-    background-color: transparent;
-  }
-}
-
 @media (min-width: 992px) {
   .transactions-container {
     margin-left: 20%;
