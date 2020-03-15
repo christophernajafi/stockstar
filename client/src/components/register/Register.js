@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -65,81 +65,79 @@ const Register = props => {
   };
 
   return (
-    <Fragment>
-      <div className="register">
-        <form onSubmit={handleSubmit}>
-          <FormGroup controlId="firstName" size="lg">
-            <FormControl
-              autoFocus
-              type="text"
-              name="firstName"
-              value={firstName}
-              onChange={handleChange}
-              placeholder="First Name"
-              required
-            />
-          </FormGroup>
-          <FormGroup controlId="lastName" size="lg">
-            <FormControl
-              autoFocus
-              type="text"
-              name="lastName"
-              value={lastName}
-              onChange={handleChange}
-              placeholder="Last Name"
-              required
-            />
-          </FormGroup>
-          <FormGroup controlId="email" size="lg">
-            <FormControl
-              autoFocus
-              type="email"
-              value={email}
-              onChange={handleChange}
-              placeholder="Email"
-              required
-              name="email"
-            />
-          </FormGroup>
-          <FormGroup controlId="password" size="lg">
-            <FormControl
-              name="password"
-              value={password}
-              onChange={handleChange}
-              type="password"
-              placeholder="Password"
-              required
-            />
-          </FormGroup>
-          <FormGroup controlId="confirmPassword" size="lg">
-            <FormControl
-              name="confirmPassword"
-              value={confirmPassword}
-              onChange={handleChange}
-              type="password"
-              placeholder="Confirm Password"
-              required
-            />
-          </FormGroup>
-          <Button
-            block
-            size="lg"
-            disabled={
-              !(firstName && lastName && email && password && confirmPassword)
-            }
-            type="submit"
-          >
-            Register
-          </Button>
-          <p className="my-1 text-center">
-            Already have an account? <Link to="/sign-in">Sign In</Link>
-          </p>
-          {error && (
-            <p className="text-center register-error text-danger"> {error} </p>
-          )}
-        </form>
-      </div>
-    </Fragment>
+    <div className="register">
+      <form onSubmit={handleSubmit}>
+        <FormGroup controlId="firstName" size="lg">
+          <FormControl
+            autoFocus
+            type="text"
+            name="firstName"
+            value={firstName}
+            onChange={handleChange}
+            placeholder="First Name"
+            required
+          />
+        </FormGroup>
+        <FormGroup controlId="lastName" size="lg">
+          <FormControl
+            autoFocus
+            type="text"
+            name="lastName"
+            value={lastName}
+            onChange={handleChange}
+            placeholder="Last Name"
+            required
+          />
+        </FormGroup>
+        <FormGroup controlId="email" size="lg">
+          <FormControl
+            autoFocus
+            type="email"
+            value={email}
+            onChange={handleChange}
+            placeholder="Email"
+            required
+            name="email"
+          />
+        </FormGroup>
+        <FormGroup controlId="password" size="lg">
+          <FormControl
+            name="password"
+            value={password}
+            onChange={handleChange}
+            type="password"
+            placeholder="Password"
+            required
+          />
+        </FormGroup>
+        <FormGroup controlId="confirmPassword" size="lg">
+          <FormControl
+            name="confirmPassword"
+            value={confirmPassword}
+            onChange={handleChange}
+            type="password"
+            placeholder="Confirm Password"
+            required
+          />
+        </FormGroup>
+        <Button
+          block
+          size="lg"
+          disabled={
+            !(firstName && lastName && email && password && confirmPassword)
+          }
+          type="submit"
+        >
+          Register
+        </Button>
+        <p className="my-1 text-center">
+          Already have an account? <Link to="/sign-in">Sign In</Link>
+        </p>
+        {error && (
+          <p className="text-center register-error text-danger"> {error} </p>
+        )}
+      </form>
+    </div>
   );
 };
 
