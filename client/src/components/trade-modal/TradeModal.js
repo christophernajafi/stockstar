@@ -2,6 +2,14 @@ import React, { useState } from "react";
 // eslint-disable-next-line
 import { Modal, Button, Form } from "react-bootstrap";
 
+/*
+  This component is not currently being used.
+  I may use it in a future version of the application.
+  It would replace the TradeForm component for small screen sizes,
+  so that the user will not have to scroll down to make a trade.
+  Instead they will be able to click on a button that opens the trade modal.
+*/
+
 const TradeModal = props => {
   // eslint-disable-next-line
   const { show, onHide, handleClose } = props;

@@ -43,6 +43,11 @@ const Register = props => {
         ...formState,
         error: "Password and confirmed password do not match."
       });
+    } else if (password.length < 6) {
+      setFormState({
+        ...formState,
+        error: "Password must be at least six characters long."
+      });
     } else {
       try {
         await axios.post("api/users/", {

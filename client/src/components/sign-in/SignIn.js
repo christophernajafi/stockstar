@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
-// import PropTypes from "prop-types";
 
 import AuthContext from "../../context/AuthContext";
 import "./sign-in.css";
