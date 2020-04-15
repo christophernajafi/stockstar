@@ -1,18 +1,25 @@
 const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
+const compression = require("compression");
 const session = require("express-session");
 const passport = require("passport");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const db = require("./db");
-const sessionStore = new SequelizeStore({
-  db
-});
+const sessionStore = new SequelizeStore({ db });
 const bodyParser = require("body-parser");
+const mongoSanitize = require("express-mongo-sanitize");
+const helmet = require("helmet");
+const xss = require("xss-clean");
+const rateLimit = require("express-rate-limit");
+const hpp = require("hpp");
+const cors = require("cors");
 const app = express();
-const { findById } = require("./utils/users");
 module.exports = app;
 
+const { findById } = require("./utils/users");
+
+// Passport registration
 passport.serializeUser((user, done) => done(null, user.id));
 
 passport.deserializeUser(async (id, done) => {
@@ -27,18 +34,49 @@ passport.deserializeUser(async (id, done) => {
 sessionStore.sync();
 db.sync();
 
+// Logging middleware
+if (process.env.NODE_ENV !== "production") {
+  app.use(morgan("dev"));
+}
+
+// Body parsing middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(morgan("dev"));
+// compression middleware
+app.use(compression());
 
+// Sanitize data
+app.use(mongoSanitize());
+
+// Set security headers
+app.use(helmet());
+
+// Prevent XSS attacks
+app.use(xss());
+
+// Rate limiting
+const limiter = rateLimit({
+  // 100 requests per 10 minutes
+  windowMs: 10 * 60 * 1000,
+  max: 100,
+});
+app.use(limiter);
+
+// Prevent http param pollution
+app.use(hpp());
+
+// Enable CORS
+app.use(cors());
+
+// Session middleware with passport
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "Fidelio",
     store: sessionStore,
     resave: false,
     saveUninitialized: false,
-    proxy: true
+    proxy: true,
   })
 );
 
@@ -56,6 +94,7 @@ if (process.env.NODE_ENV === "production") {
   );
 }
 
+// Any remaining requests with an extension (.js, .css, etc.) send 404
 app.use((req, res, next) => {
   if (path.extname(req.path).length) {
     const err = new Error("Not found");
@@ -66,6 +105,7 @@ app.use((req, res, next) => {
   }
 });
 
+// Error handling endware
 app.use((err, req, res, next) => {
   console.error(err);
   console.error(err.stack);

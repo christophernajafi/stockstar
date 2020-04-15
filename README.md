@@ -6,16 +6,12 @@ A web-based stock application that enables a user to buy stocks, keep track of t
 
 <https://stockstar-cn.herokuapp.com>
 
+<!-- ## Features -->
+<!-- ### Back End -->
+<!-- ### Front End -->
+<!-- ## Screenshots -->
+
 ## Technology Stack
-
-### Front End
-
-- React
-- React Hooks
-- React Context
-- Bootstrap
-- Font Awesome
-- Google Analytics
 
 ### Back End
 
@@ -26,7 +22,18 @@ A web-based stock application that enables a user to buy stocks, keep track of t
 - Sequelize
 - IEX API
 
-## Getting Started
+### Front End
+
+- React
+- React Hooks
+- React Context
+- Bootstrap
+- Font Awesome
+- Google Analytics
+
+## Setup
+
+To run this app locally:
 
 ```shell
 # Clone repo
@@ -45,8 +52,6 @@ npm install && npm run install-client
 # Start app locally
 npm run dev
 ```
-
-<!-- ## Screenshots -->
 
 ---
 
