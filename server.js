@@ -5,10 +5,8 @@ const compression = require("compression");
 const session = require("express-session");
 const passport = require("passport");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
-const db = require("./db");
 const sessionStore = new SequelizeStore({ db });
 const bodyParser = require("body-parser");
-const mongoSanitize = require("express-mongo-sanitize");
 const helmet = require("helmet");
 const xss = require("xss-clean");
 const rateLimit = require("express-rate-limit");
@@ -17,6 +15,7 @@ const cors = require("cors");
 const app = express();
 module.exports = app;
 
+const db = require("./db");
 const { findById } = require("./utils/users");
 
 // Passport registration
@@ -45,9 +44,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // compression middleware
 app.use(compression());
-
-// Sanitize data
-app.use(mongoSanitize());
 
 // Set security headers
 app.use(helmet());
