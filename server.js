@@ -5,6 +5,7 @@ const compression = require("compression");
 const session = require("express-session");
 const passport = require("passport");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const db = require("./db");
 const sessionStore = new SequelizeStore({ db });
 const bodyParser = require("body-parser");
 const helmet = require("helmet");
@@ -15,7 +16,6 @@ const cors = require("cors");
 const app = express();
 module.exports = app;
 
-const db = require("./db");
 const { findById } = require("./utils/users");
 
 // Passport registration
