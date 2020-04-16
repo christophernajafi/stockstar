@@ -12,11 +12,11 @@ class TradeForm extends Component {
     super(props);
     this.state = {
       ticker: "",
-      quantity: 1
+      quantity: 1,
     };
   }
 
-  handleSubmit = async event => {
+  handleSubmit = async (event) => {
     event.preventDefault();
     this.setState({ quantity: 1, ticker: "" });
     // adding a transaction handled in parent component
@@ -40,7 +40,7 @@ class TradeForm extends Component {
           Cash Balance: $
           {userCashBalance.toLocaleString(undefined, {
             minimumFractionDigits: 2,
-            maximumFractionDigits: 2
+            maximumFractionDigits: 2,
           })}
         </h5>
         <br />
@@ -51,8 +51,11 @@ class TradeForm extends Component {
               name="ticker"
               type="text"
               placeholder="Enter ticker symbol"
-              onChange={event =>
-                this.setState({ ...this.state, ticker: event.target.value })
+              onChange={(event) =>
+                this.setState({
+                  ...this.state,
+                  ticker: event.target.value.toUpperCase(),
+                })
               }
               value={this.state.ticker}
             />
@@ -65,10 +68,10 @@ class TradeForm extends Component {
               value={this.state.quantity}
               type="text"
               placeholder="Enter quantity"
-              onChange={event =>
+              onChange={(event) =>
                 this.setState({
                   ...this.state,
-                  quantity: event.target.value
+                  quantity: event.target.value,
                 })
               }
             />
