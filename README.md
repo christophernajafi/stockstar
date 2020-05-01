@@ -9,7 +9,48 @@ A web-based stock application that enables a user to buy stocks, keep track of t
 <!-- ## Features -->
 <!-- ### Back End -->
 <!-- ### Front End -->
-<!-- ## Screenshots -->
+
+## Screenshots
+
+### Home (desktop)
+
+![Home (desktop)](/screenshots/home-desktop.png)
+
+### Home (mobile)
+
+![Home (mobile)](/screenshots/home-mobile.png)
+
+### Register (desktop)
+
+![Register (desktop)](/screenshots/register-desktop.png)
+
+### Register (mobile)
+
+![Register (mobile)](/screenshots/register-mobile.png)
+
+### Sign-In (desktop)
+
+![Sign-In (desktop)](/screenshots/sign-in-desktop.png)
+
+### Sign-In (mobile)
+
+![Sign-In (mobile)](/screenshots/sign-in-mobile.png)
+
+### Portfolio (desktop)
+
+![Portfolio (desktop)](/screenshots/portfolio-desktop.png)
+
+### Portfolio (mobile) - Scroll down page in the app to see the entire Trade Form
+
+![Portfolio (mobile)](/screenshots/portfolio-mobile.png)
+
+### Transactions (desktop)
+
+![Transactions (desktop)](/screenshots/transactions-desktop.png)
+
+### Transactions (mobile) - Scroll horizontally in the app to see entire spreadsheet of transactions
+
+![Transactions (mobile)](/screenshots/transactions-mobile.png)
 
 ## Technology Stack
 
@@ -29,7 +70,6 @@ A web-based stock application that enables a user to buy stocks, keep track of t
 - React Context
 - Bootstrap
 - Font Awesome
-- Google Analytics
 
 ## Setup
 
