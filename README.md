@@ -2,7 +2,7 @@
 
 A web-based stock application that enables a user to buy stocks, keep track of their holdings in a portfolio, and see their transaction history.
 
-## Deployed Link on Heroku
+## Link to Deployed App
 
 <https://stockstar-cn.herokuapp.com>
 
@@ -52,6 +52,14 @@ A web-based stock application that enables a user to buy stocks, keep track of t
 
 ![Transactions (mobile)](/screenshots/transactions-mobile.png)
 
+### Page Not Found (desktop)
+
+![Not Found Page (desktop)](/screenshots/not-found-page-desktop.png)
+
+### Page Not Found (mobile)
+
+![Not Found Page (mobile)](/screenshots/not-found-page-mobile.png)
+
 ## Technology Stack
 
 ### Back End
@@ -93,6 +101,6 @@ npm install && npm run install-client
 npm run dev
 ```
 
----
+## Author
 
-If you would like to see my other projects, please visit [ChrisNajafi.com](https://www.chrisnajafi.com/).
+[Christopher Najafi](https://www.chrisnajafi.com/)
