@@ -101,6 +101,6 @@ npm install && npm run install-client
 npm run dev
 ```
 
-## Author
+## Developer
 
 [Christopher Najafi](https://www.chrisnajafi.com/)
